@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as MentorsRouteImport } from './routes/mentors'
+import { Route as MyLearningRouteImport } from './routes/my-learning'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProfessionalRouteImport } from './routes/professional'
+import { Route as BatchesBatchIdRouteImport } from './routes/batches.$batchId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,9 +28,19 @@ const CoursesRoute = CoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MentorsRoute = MentorsRouteImport.update({
   id: '/mentors',
   path: '/mentors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyLearningRoute = MyLearningRouteImport.update({
+  id: '/my-learning',
+  path: '/my-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -40,43 +53,85 @@ const ProfessionalRoute = ProfessionalRouteImport.update({
   path: '/professional',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BatchesBatchIdRoute = BatchesBatchIdRouteImport.update({
+  id: '/batches/$batchId',
+  path: '/batches/$batchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/login': typeof LoginRoute
   '/mentors': typeof MentorsRoute
+  '/my-learning': typeof MyLearningRoute
   '/pricing': typeof PricingRoute
   '/professional': typeof ProfessionalRoute
+  '/batches/$batchId': typeof BatchesBatchIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/login': typeof LoginRoute
   '/mentors': typeof MentorsRoute
+  '/my-learning': typeof MyLearningRoute
   '/pricing': typeof PricingRoute
   '/professional': typeof ProfessionalRoute
+  '/batches/$batchId': typeof BatchesBatchIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/login': typeof LoginRoute
   '/mentors': typeof MentorsRoute
+  '/my-learning': typeof MyLearningRoute
   '/pricing': typeof PricingRoute
   '/professional': typeof ProfessionalRoute
+  '/batches/$batchId': typeof BatchesBatchIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/courses' | '/mentors' | '/pricing' | '/professional'
+  fullPaths:
+    | '/'
+    | '/courses'
+    | '/login'
+    | '/mentors'
+    | '/my-learning'
+    | '/pricing'
+    | '/professional'
+    | '/batches/$batchId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/courses' | '/mentors' | '/pricing' | '/professional'
-  id: '__root__' | '/' | '/courses' | '/mentors' | '/pricing' | '/professional'
+  to:
+    | '/'
+    | '/courses'
+    | '/login'
+    | '/mentors'
+    | '/my-learning'
+    | '/pricing'
+    | '/professional'
+    | '/batches/$batchId'
+  id:
+    | '__root__'
+    | '/'
+    | '/courses'
+    | '/login'
+    | '/mentors'
+    | '/my-learning'
+    | '/pricing'
+    | '/professional'
+    | '/batches/$batchId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CoursesRoute: typeof CoursesRoute
+  LoginRoute: typeof LoginRoute
   MentorsRoute: typeof MentorsRoute
+  MyLearningRoute: typeof MyLearningRoute
   PricingRoute: typeof PricingRoute
   ProfessionalRoute: typeof ProfessionalRoute
+  BatchesBatchIdRoute: typeof BatchesBatchIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,11 +150,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mentors': {
       id: '/mentors'
       path: '/mentors'
       fullPath: '/mentors'
       preLoaderRoute: typeof MentorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-learning': {
+      id: '/my-learning'
+      path: '/my-learning'
+      fullPath: '/my-learning'
+      preLoaderRoute: typeof MyLearningRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -116,15 +185,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfessionalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/batches/$batchId': {
+      id: '/batches/$batchId'
+      path: '/batches/$batchId'
+      fullPath: '/batches/$batchId'
+      preLoaderRoute: typeof BatchesBatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoursesRoute: CoursesRoute,
+  LoginRoute: LoginRoute,
   MentorsRoute: MentorsRoute,
+  MyLearningRoute: MyLearningRoute,
   PricingRoute: PricingRoute,
   ProfessionalRoute: ProfessionalRoute,
+  BatchesBatchIdRoute: BatchesBatchIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
