@@ -19,6 +19,18 @@
  */
 
 @theme inline {
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-accent-violet: var(--accent-violet);
+  --color-mint: var(--mint);
+  --color-sun: var(--sun);
+  --color-sky: var(--sky);
+  --color-blush: var(--blush);
+  --font-display: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -26,6 +38,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -62,26 +75,39 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1rem;
+
+  /* Aurora Learn palette */
+  --cream: oklch(0.977 0.02 84);
+  --ink: oklch(0.302 0.056 295);
+  --brand: oklch(0.723 0.176 5.5);
+  --brand-deep: oklch(0.62 0.17 6);
+  --accent-violet: oklch(0.556 0.212 285);
+  --mint: oklch(0.808 0.145 168);
+  --sun: oklch(0.845 0.153 85);
+  --sky: oklch(0.708 0.152 250);
+  --blush: oklch(0.906 0.048 55);
+
+  --background: var(--cream);
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.955 0.02 84);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.955 0.02 84);
+  --muted-foreground: oklch(0.52 0.04 295);
+  --accent: var(--accent-violet);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.302 0.056 295 / 10%);
+  --input: oklch(0.302 0.056 295 / 12%);
+  --ring: var(--accent-violet);
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +166,39 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-weight: 600;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+}
+
+/* Chunky "pop" shadows used across the Aurora Learn design system */
+@utility pop-brand {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--brand) 70%, black);
+}
+@utility pop-ink {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--ink) 65%, black);
+}
+@utility pop-sun {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--sun) 70%, black);
+}
+@utility pop-mint {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--mint) 65%, black);
+}
+@utility pop-violet {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--accent-violet) 75%, black);
+}
+@utility pop-card {
+  box-shadow: 0 8px 0 0 color-mix(in oklab, var(--blush) 80%, white);
+}
+@utility panel-shadow {
+  box-shadow: -10px 0 40px -10px color-mix(in oklab, var(--ink) 30%, transparent);
 }
