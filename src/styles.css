@@ -179,3 +179,26 @@
   }
 
 }
+
+/* Chunky "pop" shadows used across the Aurora Learn design system */
+@utility pop-brand {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--brand) 70%, black);
+}
+@utility pop-ink {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--ink) 65%, black);
+}
+@utility pop-sun {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--sun) 70%, black);
+}
+@utility pop-mint {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--mint) 65%, black);
+}
+@utility pop-violet {
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--accent-violet) 75%, black);
+}
+@utility pop-card {
+  box-shadow: 0 8px 0 0 color-mix(in oklab, var(--blush) 80%, white);
+}
+@utility panel-shadow {
+  box-shadow: -10px 0 40px -10px color-mix(in oklab, var(--ink) 30%, transparent);
+}
