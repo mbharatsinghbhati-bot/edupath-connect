@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enrollments: {
+        Row: {
+          amount_inr: number
+          batch_id: string
+          batch_title: string
+          class_level: string
+          created_at: string
+          id: string
+          status: string
+          tier: string
+          user_id: string
+        }
+        Insert: {
+          amount_inr?: number
+          batch_id: string
+          batch_title: string
+          class_level: string
+          created_at?: string
+          id?: string
+          status?: string
+          tier: string
+          user_id: string
+        }
+        Update: {
+          amount_inr?: number
+          batch_id?: string
+          batch_title?: string
+          class_level?: string
+          created_at?: string
+          id?: string
+          status?: string
+          tier?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          audience: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          language: string | null
+          location: string | null
+          updated_at: string
+        }
+        Insert: {
+          audience?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          language?: string | null
+          location?: string | null
+          updated_at?: string
+        }
+        Update: {
+          audience?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          language?: string | null
+          location?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
